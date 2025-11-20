@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "accent", "color": "#6be7a7", "name": "Accent" },
+        { "slug": "accent-2", "color": "#79f0ff", "name": "Accent 2" },
+        { "slug": "dark-1", "color": "#071a2b", "name": "Dark" },
+        { "slug": "muted", "color": "#9bb1c7", "name": "Muted" },
+        { "slug": "white", "color": "#ffffff", "name": "White" }
+      ],
+      "gradients": [
+        { "name": "Aurora Gradient", "gradient": "linear-gradient(180deg,#6be7a7 0%,#79f0ff 100%)", "slug": "aurora-gradient" }
+      ]
+    },
+    "typography": {
+      "fontSizes": [
+        { "name": "Small", "slug": "small", "size": "13px" },
+        { "name": "Normal", "slug": "normal", "size": "16px" },
+        { "name": "Large", "slug": "large", "size": "20px" },
+        { "name": "Huge", "slug": "huge", "size": "36px" }
+      ],
+      "lineHeight": true
+    },
+    "spacing": {
+      "units": [ "px", "%", "rem" ]
+    },
+    "layout": {
+      "contentSize": "800px",
+      "wideSize": "1200px"
+    },
+    "blocks": {
+      "core/button": {
+        "spacing": {
+          "padding": true
+        }
+      }
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+      "fontSize": "16px"
+    }
+  }
+}

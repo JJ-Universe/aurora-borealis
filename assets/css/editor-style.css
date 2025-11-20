@@ -1,0 +1,47 @@
+/* Editor styles to reflect theme variables */
+:root{
+  --editor-base-font: var(--base-font-size, 16px);
+}
+.editor-styles-wrapper{
+  font-size: var(--editor-base-font);
+}
+.wp-block-button .wp-block-button__link{
+  border-radius:28px;
+}
+.wp-block-cover.has-background{
+  color: #fff;
+}
+
+/* Editor: Aurora button style matching front-end */
+.wp-block-button.is-style-aurora .wp-block-button__link{
+  background: linear-gradient(90deg, var(--accent,#6be7a7), var(--accent-2,#79f0ff));
+  color: #04202a;
+  border-radius:28px;
+  padding: .8rem 1.4rem;
+  box-shadow: 0 8px 22px rgba(3,12,18,0.45);
+}
+
+/* Editor: panel/card style to match front-end .container */
+.wp-block-group.is-style-aurora-panel{
+  background: rgba(8,14,20,0.82);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+/* Editor: smaller CTA variant */
+.wp-block-button.is-style-aurora-small .wp-block-button__link{
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  font-size: .95rem;
+}
+
+/* Pattern helpers: team grid and pricing cards for editor preview */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.team-grid .wp-block-group{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px}
+.pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pricing-card{background:rgba(255,255,255,0.02);padding:16px;border-radius:10px}
+
+@media (max-width:900px){
+  .team-grid{grid-template-columns:1fr}
+  .pricing-cards{grid-template-columns:1fr}
+}

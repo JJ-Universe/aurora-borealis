@@ -1,0 +1,8 @@
+<?php
+/**
+ * Title: Hero (Centered)
+ * Slug: aurora/hero
+ * Categories: hero
+ */
+?>
+<!-- wp:cover {"minHeight":"360","isDark":true} --><div class="wp-block-cover is-light" style="min-height:360px"><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center"} --><h2 class="has-text-align-center">Lorem ipsum dolor sit amet</h2><!-- /wp:heading --><!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">Consectetur adipiscing elit, sed do eiusmod tempor.</p><!-- /wp:paragraph --><!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} --><div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link">Get started</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div></div><!-- /wp:cover -->

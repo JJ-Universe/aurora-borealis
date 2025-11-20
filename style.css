@@ -1,0 +1,464 @@
+/*
+Theme Name: Aurora Borealis
+Description: A minimal, clean theme for local testing (Aurora Borealis).
+Author: RealJJUniverse
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: aurora-borealis
+Tags: light, responsive, minimal
+*/
+
+:root{
+  --bg-1: #071a2b;
+  --bg-2: #0b2a3f;
+  /* Dark semi-transparent panel (original mood) */
+  --panel: rgba(8,14,20,0.82);
+  --text: #e8f1f5;
+  --muted: rgba(255,255,255,0.72);
+  --header-height: 72px;
+  --container-gap: 1rem;
+  --site-max-width: 1200px;
+  /* Customizer-driven defaults (overridden by inline dynamic CSS) */
+  --accent: #6be7a7;
+  --accent-2: #79f0ff;
+  --header-opacity: 0.55;
+  --header-opacity-2: 0.35;
+  --hero-min-height: 360px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family: var(--body-font, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  color:var(--text);
+  background: var(--bg-1);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* Typography variables driven by the Customizer */
+body{font-size:var(--base-font-size,16px)}
+h1{font-size:calc(var(--base-font-size,16px) * var(--h1-scale,1.8));line-height:1.05}
+.screen-reader-text{position:absolute;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);height:1px;width:1px;margin:-1px;overflow:hidden;padding:0;border:0;word-wrap:normal}
+.screen-reader-text:focus,
+.screen-reader-text:active{clip:auto;clip-path:none;height:auto;width:auto;margin:0;padding:10px 16px;background:#fff;color:#000;z-index:100;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,0.25)}
+header h1{margin:0 0 .25rem 0;font-size:1.6rem}
+header p{margin:0 0 1rem 0;color:var(--muted)}
+main article{margin-bottom:1.25rem}
+footer{margin-top:1.25rem;color:var(--muted);font-size:.9rem}
+a{color:var(--link-color,#0b7bbf);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- Header & Hero styles ---------- */
+:root{
+  --accent: #6be7a7;
+  --accent-2: #79f0ff;
+  --hero-text: rgba(255,255,255,0.95);
+}
+
+.site-header{position:fixed;left:0;right:0;top:0;z-index:90;padding:10px 32px;display:flex;align-items:center;justify-content:center;height:var(--header-height)}
+.site-header{
+  background: linear-gradient(180deg, rgba(2,8,12,var(--header-opacity)), rgba(2,8,12,var(--header-opacity-2)));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.site-nav{width:100%;max-width:1200px;display:flex;align-items:center;gap:24px}
+.site-nav{flex-wrap:wrap;justify-content:space-between}
+.site-nav .brand{flex:0 0 auto;display:flex;align-items:center;gap:12px;margin-right:auto}
+.site-nav .brand a{color:var(--hero-text);font-weight:700;font-family:var(--heading-font, Montserrat, system-ui, sans-serif);letter-spacing:0.02em;text-decoration:none}
+/* Logo sizing: constrain by max width and header height and preserve aspect ratio.
+   This prevents large square or tall logos from overflowing the header. */
+.site-nav .brand img,
+.site-nav .brand svg,
+.custom-logo-link img,
+.custom-logo-link svg {
+  max-width: var(--logo-max-width,200px);
+  max-height: calc(var(--header-height,72px) - 12px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* If the user selects 'Fit by width' prefer max-width and allow height to scale naturally */
+body.logo-fit-width .site-nav .brand img,
+body.logo-fit-width .site-nav .brand svg,
+body.logo-fit-width .custom-logo-link img,
+body.logo-fit-width .custom-logo-link svg {
+  max-height: none;
+  height: auto;
+  width: auto;
+  max-width: var(--logo-max-width,200px);
+}
+.primary-nav{flex:1 1 auto;min-width:0}
+.primary-nav .menu{
+  display:flex;
+  list-style:none;
+  margin:0;
+  padding:0;
+  gap:22px;
+  justify-content:center;
+}
+.primary-nav .menu li{list-style:none}
+/* Ensure wp_page_menu fallback inherits the desktop flex alignment */
+.primary-nav .menu > ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:inherit;
+  justify-content:inherit;
+  width:100%;
+}
+.primary-nav .menu > ul > li{list-style:none}
+/* Responsive rules will be added here */
+.primary-nav .menu li a{color:var(--menu-text-color, rgba(255,255,255,0.9));text-decoration:none;padding:.25rem .35rem;font-size:var(--menu-font-size,16px)}
+.primary-nav .menu li.current-menu-item a{border-bottom:2px solid var(--menu-text-color, rgba(255,255,255,0.9))}
+.primary-nav .menu li a:hover{color:var(--menu-hover-color, var(--accent));}
+.nav-search{flex:0 0 auto}
+.search-form{display:flex;align-items:center;gap:8px}
+.search-field{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);color:var(--hero-text);padding:.5rem .65rem;border-radius:999px;min-width:160px}
+/* Responsive rules will be added here */
+.search-submit{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);color:var(--hero-text);padding:.45rem .6rem;border-radius:999px}
+
+.hero{position:relative;overflow:hidden;display:flex;color:var(--hero-text);background:linear-gradient(180deg,#051a2a 0%, #07283a 30%, #071b2d 100%);padding-top:var(--header-height)}
+.hero{position:relative;overflow:hidden;display:flex;color:var(--hero-text);background:var(--bg-1);padding-top:var(--header-height)}
+/* Hero height: fill viewport minus header, but clamp to sensible min/max so
+  very short or very tall viewports behave predictably. This prevents the
+  hero from pushing the container off-screen while still allowing content to
+  flow when it's taller than the viewport. */
+.hero{min-height:clamp(var(--hero-min-height), calc(100vh - var(--header-height)), 920px);display:flex;align-items:center}
+.hero-auroras{position:absolute;inset:0  -10% 0 -10%;pointer-events:none}
+.aurora{position:absolute;left:-20%;right:-20%;height:72%;top:2%;filter:blur(36px);opacity:0.95;transform:translate3d(0,0,0);mix-blend-mode:screen}
+.aurora-1{background:linear-gradient(90deg, rgba(21,255,194,0.18), rgba(0,138,255,0.08), rgba(130,51,255,0.09));animation:auroraShift 9s infinite linear}
+.aurora-2{background:linear-gradient(90deg, rgba(120,255,180,0.16), rgba(0,255,200,0.08), rgba(80,220,255,0.06));top:14%;height:60%;filter:blur(48px);animation:auroraShift 13s infinite linear}
+.aurora-3{background:linear-gradient(90deg, rgba(140,255,200,0.12), rgba(0,200,255,0.06));top:36%;height:40%;filter:blur(40px);opacity:0.85;animation:auroraShift 11.5s infinite linear}
+
+.hero-inner{position:relative;z-index:70;display:flex;align-items:center;max-width:var(--site-max-width);margin:0 auto;padding:4rem var(--container-gap)}
+/* Ensure hero content stacks nicely on narrow screens */
+.hero-inner{gap:20px}
+.hero-content{max-width:640px}
+/* Center front-page hero content and keep it slightly above the mountains */
+body.has-hero .hero-inner{justify-content:center;text-align:center}
+body.has-hero .hero-content{margin-left:0;margin-right:0;transform:translateY(-48px)}
+
+/* On smaller screens revert to stacked/left-aligned layout so text doesn't feel cramped */
+@media (max-width:900px){
+  body.has-hero .hero-inner{align-items:flex-start;text-align:left}
+  body.has-hero .hero-content{transform:none}
+  /* Do not show the mobile toggle just because the page has a hero at this
+     breakpoint — toggles are shown at the smaller breakpoints to avoid
+     unexpected layout shifts on wide hero pages. */
+}
+.eyebrow{font-family:var(--heading-font, Montserrat, sans-serif);margin:0;color:var(--accent-2);letter-spacing:0.06em;font-weight:700}
+.hero-title{font-family:var(--heading-font, Montserrat, sans-serif);font-size:3rem;margin:.35rem 0 0;color:var(--hero-text)}
+.hero-sub{font-family:var(--body-font, "Open Sans", system-ui, sans-serif);color:rgba(255,255,255,0.8);line-height:1.6;margin-top:.75rem}
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;padding:.75rem 1.25rem;border-radius:28px;border:2px solid rgba(255,255,255,0.6);color:var(--hero-text);text-decoration:none;margin-top:1rem;font-weight:600;min-height:44px}
+
+.hero-mountains{position:absolute;left:0;right:0;bottom:-2px;width:100%;height:260px;z-index:50;pointer-events:none}
+
+/* Container overlap effect (full-bleed container) */
+.container{ /* Centered card-style container */
+  max-width: var(--site-max-width);
+  margin: 1.5rem auto 2rem;
+  background: var(--panel);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.6);
+  transition: box-shadow .18s ease, transform .12s ease;
+  position: relative;
+  z-index: 60; /* sits above hero background but below hero content */
+}
+.container:hover{box-shadow:0 18px 44px rgba(0,0,0,0.6);transform:translateY(-3px)}
+.container-inner{max-width:var(--site-max-width);margin:0 auto;padding:0  var(--container-gap);box-sizing:border-box}
+
+/* Only overlap container when the page has a hero. Use a responsive
+   negative margin so the container never moves above the viewport.
+   Also constrain height so content fits the screen and can scroll. */
+body.has-hero .container{
+  /* Decorative fixed overlap so the container visually sits over the hero a bit
+     but doesn't block clicks — hero content remains above the container. */
+  margin: -80px 0 2rem;
+  position: relative;
+  z-index: 60; /* above hero background (mountains) but below hero content */
+  padding-top:1.25rem;
+  /* Force horizontal centering and consistent width with the hero */
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(var(--site-max-width), calc(100% - 4rem));
+  max-width: var(--site-max-width);
+}
+
+/* When the page has a hero we use absolute centering via left:50% + translateX(-50%).
+   Keep that centering when hovering by applying a combined transform. */
+body.has-hero .container:hover{ transform: translateX(-50%) translateY(-3px); }
+
+/* On pages without the hero, push the container below the fixed header
+   so the header doesn't overlap the content. Adjust on small screens. */
+body:not(.has-hero) .container{
+  margin-top: calc(var(--header-height) + 0.75rem);
+}
+
+@media (max-width:900px){
+  body:not(.has-hero) .container{
+    margin-top: calc(var(--header-height) + 0.45rem);
+    padding: 1rem;
+  }
+}
+
+/* Prevent content being covered by fixed header on pages without hero */
+main{padding-top:var(--header-height)}
+body.has-hero main{padding-top:0}
+
+/* Simple responsive tweaks */
+@media (max-width: 900px){
+  .hero-inner{padding:3rem var(--container-gap);flex-direction:column;align-items:flex-start}
+  .hero-title{font-size:2rem}
+  .primary-nav .menu{display:none}
+  body.has-hero .container{margin: -40px 0 1.25rem; padding:1rem;border-radius:10px}
+  .search-field{min-width:110px}
+}
+
+/* Prevent header item overlap earlier — hide centered menu and show mobile toggle
+   sooner, reduce gaps and shrink search input to preserve space. */
+@media (max-width: 1100px){
+  .site-nav{gap:12px}
+  .site-nav{justify-content:space-between}
+  .site-nav .brand{flex:0 0 auto;order:1}
+    /* Mobile toggle positioned relative to header, outside the flex nav
+      so it never pushes or reflows the logo or brand. */
+    .site-header .mobile-toggle{display:inline-block;order:2;position:absolute;right:16px;top:50%;transform:translateY(-50%);margin-left:0;z-index:110}
+  .primary-nav{order:2;flex:1 1 auto;min-width:0}
+  .primary-nav .menu{display:none;gap:12px;justify-content:flex-start}
+  .nav-search{order:3;flex:0 0 auto;margin-left:12px}
+  .search-field{min-width:120px}
+  .site-nav{padding-right:64px}
+}
+
+@media (max-width: 760px){
+  /* Further reduce search and hide extra elements on small phones */
+  .search-field{min-width:88px;padding:.35rem .5rem}
+  .site-nav{gap:8px;padding-left:12px;padding-right:12px}
+  .hero-inner{padding:2.25rem var(--container-gap);flex-direction:column;align-items:flex-start}
+  /* On very small screens allow the hero to grow naturally (no forced min-height) */
+  .hero{min-height:auto;padding-bottom:1.25rem}
+}
+
+/* Front page (hero) — be more aggressive collapsing the header to avoid overlap
+   since the hero content is large and centered. These rules only apply when
+   the hero exists (body.has-hero). */
+@media (max-width: 1200px){
+  body.has-hero .site-nav{gap:10px}
+  body.has-hero .primary-nav .menu{display:none}
+  body.has-hero .site-nav .brand{order:1}
+  body.has-hero .nav-search{display:none}
+  body.has-hero .hero-inner{padding:3.25rem var(--container-gap)}
+}
+
+@media (max-width: 980px){
+  /* On smaller hero viewports hide the search and reduce hero padding further */
+  body.has-hero .nav-search{display:none}
+  body.has-hero .hero-inner{padding:2rem var(--container-gap)}
+  body.has-hero .hero-title{font-size:1.9rem}
+}
+
+/* Mobile nav and business sections */
+.mobile-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--hero-text);padding:.4rem .6rem;border-radius:8px;font-size:1.1rem}
+.mobile-nav{display:none;position:absolute;top:var(--header-height);right:16px;background:var(--menu-bg-color, rgba(2,8,12,0.6));backdrop-filter:blur(6px);border-radius:8px;padding:14px;z-index:80;min-width:200px}
+.mobile-nav .mobile-menu{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+/* Mirror the fallback fix for the stacked mobile navigation */
+.mobile-nav .mobile-menu > ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:inherit}
+.mobile-nav .mobile-menu li a{color:var(--hero-text);display:block;padding:.4rem .6rem}
+
+body.nav-open .mobile-nav{display:block}
+/* Mobile full-bleed toggle (also controlled by body.mobile-menu-full-bleed) */
+body.mobile-menu-full-bleed .mobile-nav{left:0;right:0;width:100%;border-radius:0}
+
+body.nav-open{overflow:hidden}
+
+/* Mobile menu alignment helper — read from --mobile-menu-align (left|center|right)
+  Note: some older browsers don't support CSS variables in justify-content,
+  so we provide simple fallbacks in layout rules elsewhere. */
+.mobile-nav .mobile-menu{align-items:flex-start}
+.mobile-nav .mobile-menu li{width:100%}
+.mobile-nav{text-align:var(--mobile-menu-align, right)}
+body.nav-open .mobile-toggle{background:rgba(255,255,255,0.12)}
+
+/* Business landing sections */
+.section{padding:48px 20px}
+.section.bg-ghost{background:linear-gradient(180deg, rgba(3,20,28,0.02), rgba(3,20,28,0.00))}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+.feature{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:10px}
+.feature h3{margin-top:0}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:28px;border-radius:12px;background:linear-gradient(90deg, rgba(11,123,191,0.08), rgba(11,123,191,0.02))}
+.cta .cta-text{max-width:72%}
+.cta .cta-cta{margin:0}
+
+.site-footer{
+  margin:2.5rem auto 0;
+  padding:2.75rem var(--container-gap) 2rem;
+  background:linear-gradient(180deg, rgba(3,20,28,0.35), rgba(3,20,28,0.08));
+  border-radius:16px 16px 0 0;
+  box-shadow:0 -12px 32px rgba(0,0,0,0.45);
+  color:var(--hero-text);
+}
+.footer-inner{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:28px;
+  align-items:flex-start;
+  margin-bottom:1.5rem;
+}
+.footer-panel{
+  background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:1.5rem;
+  box-shadow:0 12px 28px rgba(0,0,0,0.25);
+  min-height:100%;
+}
+.footer-panel-label{
+  margin:0 0 .85rem;
+  text-transform:uppercase;
+  font-size:.8rem;
+  letter-spacing:.15em;
+  color:rgba(255,255,255,0.6);
+}
+.footer-brand .footer-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.footer-brand .footer-logo a{
+  color:var(--hero-text);
+  font-weight:700;
+  font-size:1.2rem;
+  text-decoration:none;
+}
+.footer-brand .custom-logo-link{display:inline-flex;align-items:center}
+.footer-brand .custom-logo-link img{max-height:48px;width:auto}
+.footer-description{margin:.4rem 0 0;color:rgba(255,255,255,0.75)}
+.footer-widgets .widget{margin-bottom:1.25rem}
+.footer-widgets .widget-title{font-size:1rem;color:var(--accent);margin-bottom:.4rem}
+.footer-social-menu{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.footer-social-menu li{list-style:none}
+.footer-social-menu a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:.6rem .9rem;
+  border-radius:10px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  color:var(--hero-text);
+  font-size:.9rem;
+  text-decoration:none;
+}
+.footer-social-menu a::after{
+  content:'\2197';
+  font-size:.85rem;
+  opacity:0.7;
+}
+.footer-social-menu a:hover{
+  background:rgba(255,255,255,0.14);
+  border-color:rgba(255,255,255,0.2);
+}
+.footer-bottom{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem}
+.footer-bottom p{margin:0;color:rgba(255,255,255,0.7)}
+.back-to-top{margin-left:auto;font-weight:600;color:var(--accent);text-decoration:none}
+.back-to-top:hover{text-decoration:underline}
+
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:1.25rem}
+.post-card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));padding:20px;border-radius:12px;box-shadow:0 10px 24px rgba(0,0,0,0.35);display:flex;flex-direction:column;gap:.75rem;min-height:240px}
+.post-card__meta{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.75rem;text-transform:uppercase;letter-spacing:.08em}
+.post-card__title{margin:0}
+.post-card__title a{color:var(--text)}
+.post-card__excerpt{margin:0;color:rgba(255,255,255,0.82);line-height:1.5}
+.post-card__read{margin-top:auto;font-weight:600;color:var(--accent);text-decoration:none}
+.post-card__read:hover{text-decoration:underline}
+
+/* Pattern-specific helpers */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.team-grid .wp-block-group{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:10px}
+.pricing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pricing-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+.pricing-card h3{margin-top:0}
+
+@media (max-width:900px){
+  .team-grid{grid-template-columns:1fr}
+  .pricing-cards{grid-template-columns:1fr}
+}
+
+@media (max-width:900px){
+  .site-header .mobile-toggle{display:inline-block;position:absolute;right:12px;top:50%;transform:translateY(-50%);margin-left:0}
+  .mobile-nav{right:12px;left:auto;top:62px}
+  .features{grid-template-columns:1fr;gap:14px}
+  .cta{flex-direction:column;align-items:flex-start}
+  .cta .cta-text{max-width:100%}
+  .posts{grid-template-columns:1fr}
+  .site-footer{padding:2rem 1.25rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .back-to-top{margin-left:0}
+}
+
+/* Very small screens: make content full-bleed and increase readability.
+   This avoids tiny cramped cards and ensures front-page sections span the
+   viewport for easier reading on phones. */
+@media (max-width:560px){
+  /* Make the main container fill the width and remove heavy shadows/borders */
+  .container{
+    width:100%;
+    margin:0; /* sit flush with viewport */
+    left:0; transform:none; max-width:100%; border-radius:0; padding:1rem; box-shadow:none;
+  }
+  /* Increase base font slightly so body text remains readable on very small screens */
+  body{font-size:calc(var(--base-font-size,16px) * 1.05)}
+  /* Make hero and section paddings a bit bigger and full-bleed */
+  .hero-inner{padding:2.25rem 1rem}
+  .hero-title{font-size:2.2rem}
+  .hero-sub, .page-intro, .page-content{font-size:1rem}
+  /* Ensure mobile toggle and nav panel spacing are preserved */
+  .mobile-toggle{right:12px}
+  .mobile-nav{right:0;left:0;width:100%;border-radius:0;top:var(--header-height);height:calc(100vh - var(--header-height));overflow:auto;padding-bottom:28px}
+  /* Add internal padding for menu items on full-screen mobile panel */
+  .mobile-nav .mobile-menu{padding:18px}
+  .mobile-nav .mobile-menu li a{padding:.75rem 1rem}
+  .site-footer{border-radius:0}
+}
+
+.section-concept{background:rgba(7,26,43,0.04)}
+.concept{display:flex;align-items:center;gap:32px}
+.concept-copy h2{margin-top:.25rem}
+.concept-figure{margin:0;flex:0 0 360px;text-align:center}
+.concept-figure img{width:100%;height:auto;border-radius:14px;box-shadow:0 18px 36px rgba(7,26,43,0.35)}
+.concept-figure figcaption{font-size:.85rem;color:var(--muted);margin-top:8px}
+
+@media (max-width:900px){
+  .concept{flex-direction:column}
+  .concept-figure{width:100%}
+}
+
+@keyframes auroraShift{
+  0%{transform:translateX(-6%)}
+  50%{transform:translateX(6%)}
+  100%{transform:translateX(-6%)}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .aurora{animation:none}
+  .hero{background-position:top center}
+}
+
+/* Content area styles kept minimal */
+main article h2{margin-top:0}
+.page-content{margin-bottom:2rem}
+.page-header{text-align:center;margin-bottom:1.5rem}
+.page-header h1{margin-bottom:.5rem;font-size:2rem}
+.page-intro{color:var(--muted);max-width:560px;margin:0 auto}
+.page-featured{margin-bottom:1.5rem}
+.page-featured img{width:100%;height:auto;border-radius:12px;box-shadow:0 10px 26px rgba(2,8,12,0.25)}
+
+/* Accessibility: visible focus styles for keyboard users */
+*:focus{outline:none}
+*:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
