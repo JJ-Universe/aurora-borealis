@@ -68,7 +68,13 @@ if ( function_exists( 'wp_body_open' ) ) {
   </div>
 </header>
 
-<?php if ( is_front_page() ) : ?>
+<?php if ( is_front_page() ) :
+  $hero_eyebrow = get_theme_mod( 'aurora_hero_eyebrow', __( 'NORTHERN LIGHTS.', 'aurora-borealis' ) );
+  $hero_title = get_theme_mod( 'aurora_hero_title', __( 'Lorem ipsum dolor sit amet', 'aurora-borealis' ) );
+  $hero_sub = get_theme_mod( 'aurora_hero_subtitle', __( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'aurora-borealis' ) );
+  $hero_btn_text = get_theme_mod( 'aurora_hero_button_text', __( 'Learn more', 'aurora-borealis' ) );
+  $hero_btn_url = get_theme_mod( 'aurora_hero_button_url', '#' );
+?>
 <section class="hero" role="banner">
   <div class="hero-auroras">
     <div class="aurora aurora-1"></div>
@@ -77,10 +83,12 @@ if ( function_exists( 'wp_body_open' ) ) {
   </div>
   <div class="hero-inner">
     <div class="hero-content">
-      <h2 class="eyebrow">NORTHERN LIGHTS.</h2>
-      <h1 class="hero-title">Lorem ipsum dolor sit amet</h1>
-      <p class="hero-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <p><a class="btn-outline" href="#">Learn more</a></p>
+      <?php if ( $hero_eyebrow ) : ?><h2 class="eyebrow"><?php echo esc_html( $hero_eyebrow ); ?></h2><?php endif; ?>
+      <?php if ( $hero_title ) : ?><h1 class="hero-title"><?php echo esc_html( $hero_title ); ?></h1><?php endif; ?>
+      <?php if ( $hero_sub ) : ?><p class="hero-sub"><?php echo wp_kses_post( $hero_sub ); ?></p><?php endif; ?>
+      <?php if ( $hero_btn_text ) : ?>
+        <p><a class="btn-outline" href="<?php echo esc_url( $hero_btn_url ? $hero_btn_url : '#' ); ?>"><?php echo esc_html( $hero_btn_text ); ?></a></p>
+      <?php endif; ?>
     </div>
   </div>
   <svg class="hero-mountains" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
